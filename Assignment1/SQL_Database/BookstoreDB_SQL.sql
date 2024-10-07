@@ -1,4 +1,3 @@
-DROP DATABASE IF EXISTS EBookstoreDB;
 CREATE DATABASE EBookstoreDB;
 
 USE EBookstoreDB;
@@ -75,6 +74,8 @@ CREATE TABLE ORDER_BOOK (
     book_id INT,
     quantity INT,
     PRIMARY KEY (order_id, book_id),
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
     FOREIGN KEY (order_id) REFERENCES `ORDER`(order_id),
     FOREIGN KEY (book_id) REFERENCES BOOK(book_id)
 );
