@@ -1,3 +1,6 @@
+DROP ROLE IF EXISTS 'Member';
+DROP ROLE IF EXISTS 'Employee';
+DROP ROLE IF EXISTS 'Admin';
 CREATE ROLE 'Member';
 CREATE ROLE 'Employee';
 CREATE ROLE 'Admin';

@@ -1,3 +1,4 @@
+DROP DATABASE IF EXISTS EBookstoreDB;
 CREATE DATABASE EBookstoreDB;
 
 USE EBookstoreDB;
@@ -45,6 +46,7 @@ CREATE TABLE BOOK (
     pu_id INT,
     FOREIGN KEY (author_id) REFERENCES AUTHOR(author_id),
     FOREIGN KEY (pu_id) REFERENCES PUBLISHER(pu_id)
+
 );
 
 CREATE TABLE GENRE (
@@ -74,10 +76,12 @@ CREATE TABLE ORDER_BOOK (
     book_id INT,
     quantity INT,
     PRIMARY KEY (order_id, book_id),
-    ON DELETE CASCADE
+    FOREIGN KEY (order_id) REFERENCES `ORDER`(order_id)
+	ON DELETE CASCADE
     ON UPDATE CASCADE,
-    FOREIGN KEY (order_id) REFERENCES `ORDER`(order_id),
     FOREIGN KEY (book_id) REFERENCES BOOK(book_id)
+	ON DELETE CASCADE
+	ON UPDATE CASCADE
 );
 
 CREATE TABLE ORDER_PUBLISHER (
